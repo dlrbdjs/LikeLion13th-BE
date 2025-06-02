@@ -5,7 +5,7 @@ name: Deploy to AWS EC2 using Docker
 on:
   push:
     branches:
-      - gyueon
+      - gyu
 
 env:
   DOCKER_IMAGE_NAME: gyueon/musa
