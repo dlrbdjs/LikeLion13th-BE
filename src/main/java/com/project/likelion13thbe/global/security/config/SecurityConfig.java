@@ -39,6 +39,7 @@ public class SecurityConfig {
 
     //인증이 필요하지 않은 url
     private final String[] allowUrl = {
+            "/",
             "/login", //로그인 은 인증이 필요하지 않음
             "/auth", // 회원가입은 인증이 필요하지 않음
             "/temp-password", // 임시 비밀번호 발급
