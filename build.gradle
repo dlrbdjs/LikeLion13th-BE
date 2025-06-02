@@ -81,6 +81,3 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-buildDir = 'C:/intelliJ_builds/LikeLion13th-BE/fork/build'
-
-buildDir = 'C:/intelliJ_builds/LikeLion13th-BE/build'
