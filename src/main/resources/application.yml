@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: LikeLion13th-BE
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # MySQL JDBC 드라이버 클래스 이름
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    database: mysql # 사용할 DB 유형 지정 (MySQL)
+    database-platform: org.hibernate.dialect.MySQLDialect # Hibernate에서 사용할 MySQL 방언(dialect) 지정
+    show-sql: true # 실행된 SQL 쿼리를 콘솔에 출력할지 여부
+    hibernate:
+      ddl-auto: update # 애플리케이션 실행 시 DB 스키마의 상태 설정
+    properties:
+      hibernate:
+        format_sql: true # 출력되는 SQL 쿼리를 보기 좋게 포맷팅
+  jwt:
+    secret: sd56sdf7sdf7sdf67sd76sdf68dsf76sdv
+    token:
+      access-expiration-time: 3600000
+      refresh-expiration-time: 86400000
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            authorization-grant-type: authorization_code
+            client-id: ${KAKAO_CLIENT_ID}
+            redirect-uri: http://localhost:8080/callback/kakao
+            client-authentication-method: client_secret_post
+            scope:
+              - profile_nickname
+              - profile_image
+              - profile_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+    region:
+      static: ap-northeast-2
+    s3:
+      bucket: ${AWS_BUCKET_NAME}
